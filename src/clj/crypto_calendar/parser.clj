@@ -20,5 +20,9 @@
                               (s/descendant
                                 (s/tag :h2)
                                 (s/tag :a)) %) blocks))))
-        descriptions  ]
-    {:items (map #(assoc {} :name %) project_names) }))
+        description "Good one!"
+        list_data  (map #(assoc {} :name % :description description) project_names)
+        left_block (take (/ (count list_data) 2) list_data)
+        right_block (drop (/ (count list_data) 2) list_data)]
+    {:left left_block
+     :right right_block}))

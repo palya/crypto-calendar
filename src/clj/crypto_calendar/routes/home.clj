@@ -9,9 +9,6 @@
    "home.html"
    (parser/currencies-blocks)))
 
-(defn about-page []
-  (layout/render "about.html"))
-
 (defroutes home-routes
   (GET "/" request (home-page request)))
 

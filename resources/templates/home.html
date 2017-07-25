@@ -3,9 +3,21 @@
 <div class="row">
   <div class="col-sm-12">
     <ul class="cards">
-      {% for item in items %}
-        <li>
-          <p>{{ item.name }}</p>
+      {% for item in left %}
+        <li class="left">
+          <p>
+            <p>{{ item.name }}<p/>
+            <p>{{ item.description }}<p/>
+
+          </p>
+        </li>
+      {% endfor %}
+      {% for item in right %}
+        <li class="right">
+          <p>
+            <p>{{ item.name }}<p/>
+            <p>{{ item.description }}<p/>
+          </p>
         </li>
       {% endfor %}
     </ul>
