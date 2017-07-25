@@ -7,7 +7,7 @@
 (defn home-page [{:keys [params]}]
   (layout/render
    "home.html"
-   (merge {:names (parser/project-names)})))
+   (parser/currencies-blocks)))
 
 (defn about-page []
   (layout/render "about.html"))

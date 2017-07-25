@@ -8,13 +8,17 @@
 (def main-page (atom (-> (client/get base-url)
              :body parse as-hickory)))
 
-(defn card-blocks [page] (s/select
-      (s/class "card-block") page))
+(defn card-blocks [page]
+  (s/select
+    (s/class "card-block") page))
 
-(defn project-names []
-  (flatten
-    (mapv #(-> % :content)
-      (flatten (mapv #(s/select
-                      (s/descendant
-                        (s/tag :h2)
-                        (s/tag :a)) %) (card-blocks @main-page))))))
+(defn currencies-blocks []
+  (let [blocks (card-blocks @main-page)
+        project_names (flatten
+                          (mapv #(-> % :content)
+                            (flatten (mapv #(s/select
+                              (s/descendant
+                                (s/tag :h2)
+                                (s/tag :a)) %) blocks))))
+        descriptions  ]
+    {:items (map #(assoc {} :name %) project_names) }))
