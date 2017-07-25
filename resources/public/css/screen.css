@@ -1,6 +1,6 @@
 html,
 body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Roboto Condensed',sans-serif;
     height: 100%;
 }
 .navbar {
@@ -27,6 +27,21 @@ body {
 .right {
   float: right;
   width: 50%;
+}
+
+.currency-title h2 {
+  font-size: 1.5rem;
+  padding-top: .1875rem;
+  padding-bottom: .25rem;
+  letter-spacing: -1px;
+  color: #000;
+  margin-top: 20px;
+}
+
+.card-project {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #5e5e5e;
 }
 
 @media (min-width: 34em) {

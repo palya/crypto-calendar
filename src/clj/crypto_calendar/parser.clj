@@ -20,9 +20,30 @@
                               (s/descendant
                                 (s/tag :h2)
                                 (s/tag :a)) %) blocks))))
-        description "Good one!"
-        list_data  (map #(assoc {} :name % :description description) project_names)
-        left_block (take (/ (count list_data) 2) list_data)
-        right_block (drop (/ (count list_data) 2) list_data)]
-    {:left left_block
-     :right right_block}))
+        description (flatten
+                          (mapv #(-> % :content)
+                            (flatten (mapv #(s/select
+                              (s/descendant
+                                (s/class :cp-prj-descr)
+                                (s/tag :div)) %) blocks))))
+        launch  (flatten
+                          (mapv #(-> % :content)
+                            (flatten (mapv #(s/select
+                              (s/descendant
+                                (s/class :cp-what)
+                                s/first-child
+                                (s/class :text-black)) %) blocks))))
+        base  (flatten
+                          (mapv #(-> % :content)
+                            (flatten (mapv #(s/select
+                              (s/descendant
+                                (s/class :cp-what)
+                                (s/nth-child 2)
+                                (s/class :text-black)) %) blocks))))
+        list_data  (map #(assoc {}
+                           :name %1
+                           :description %2
+                           :launch %3
+                           :base %4) project_names description launch base)]
+
+    {:items list_data}))
