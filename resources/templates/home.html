@@ -7,9 +7,10 @@
         <div class="currency-title">
           <h2>{{ item.name }}</h2>
         </div>
-        <div class="description">{{ item.description }}</div>
-        <div class="launch">Launch: <span>{{ item.launch }}</span></div>
-        <div class="launch">Base: <span>{{ item.base }}</span></div>
+        <div>{{ item.description }}</div>
+        <div>Launch: <span>{{ item.launch }}</span></div>
+        <div>Base: <span>{{ item.base }}</span></div>
+        <div>Website: <a href="{{ item.website }}">{{ item.website }}</a></div>
       </div>
     </div>
   {% endfor %}

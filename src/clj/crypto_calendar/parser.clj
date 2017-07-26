@@ -40,10 +40,19 @@
                                 (s/class :cp-what)
                                 (s/nth-child 2)
                                 (s/class :text-black)) %) blocks))))
+        website (flatten
+                          (mapv #(-> % :content)
+                            (flatten (mapv #(s/select
+                              (s/descendant
+                                (s/class :cp-who)
+                                (s/nth-child 2)
+                                (s/tag :a)
+                                (s/tag :span)) %) blocks))))
         list_data  (map #(assoc {}
                            :name %1
                            :description %2
                            :launch %3
-                           :base %4) project_names description launch base)]
+                           :base %4
+                           :website %5) project_names description launch base website)]
 
     {:items list_data}))
